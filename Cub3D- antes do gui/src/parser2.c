@@ -6,7 +6,7 @@
 /*   By: gmorais- <gmorais-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 21:14:43 by mbarreto          #+#    #+#             */
-/*   Updated: 2024/02/05 21:30:55 by gmorais-         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:25:27 by gmorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,14 @@ void	parse_colors(t_mlx *g)
 	if (g->m->sky == NULL || g->m->floor == NULL)
 		wrong_map(g);
 	while (g->m->sky[++i])
-		if ((g->m->sky[i] > '9' && g->m->sky[i] != ',') || (g->m->sky[i] < '0'
-				&& g->m->sky[i] != ','))
+		if ((g->m->sky[i] > '9' && g->m->sky[i] != ',' && g->m->sky[i] != ' ') \
+		|| (g->m->sky[i] < '0' && g->m->sky[i] != ',' && g->m->sky[i] != ' '))
 			wrong_map(g);
 	i = -1;
 	while (g->m->floor[++i])
-		if ((g->m->floor[i] > '9' && g->m->floor[i] != ',')
-			|| (g->m->floor[i] < '0' && g->m->floor[i] != ','))
+		if ((g->m->floor[i] > '9' && g->m->floor[i] != ',' \
+		&& g->m->floor[i] != ' ') || (g->m->floor[i] < '0' \
+		&& g->m->floor[i] != ',' && g->m->floor[i] != ' '))
 			wrong_map(g);
 }
 

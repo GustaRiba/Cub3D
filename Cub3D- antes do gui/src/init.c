@@ -6,7 +6,7 @@
 /*   By: gmorais- <gmorais-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 21:12:35 by gmorais-          #+#    #+#             */
-/*   Updated: 2024/02/08 14:34:26 by gmorais-         ###   ########.fr       */
+/*   Updated: 2024/02/15 17:02:39 by gmorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ float	angle_from_map(char o)
 	else if (o == 'W')
 		return (M_PI);
 	else if (o == 'E')
-		return (0.01 * M_PI_2 / 2);
+		return (0);
 	else
 		return (M_PI_2);
 }

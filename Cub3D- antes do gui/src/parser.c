@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbarreto <mbarreto@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: gmorais- <gmorais-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 21:14:41 by mbarreto          #+#    #+#             */
-/*   Updated: 2024/02/05 21:14:42 by mbarreto         ###   ########.fr       */
+/*   Updated: 2024/02/15 19:21:36 by gmorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	read_map(t_mlx *g)
 	free(buf);
 	buf = NULL;
 }
+
 
 bool	is_file_valid(int argc, char **argv, t_mlx *g)
 {
