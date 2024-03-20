@@ -6,7 +6,7 @@
 /*   By: gmorais- <gmorais-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 21:12:57 by gmorais-          #+#    #+#             */
-/*   Updated: 2024/02/05 22:04:18 by gmorais-         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:36:37 by gmorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,7 @@ void	load_textures(t_mlx *mlx)
 	mlx->textures[3].addr = mlx_get_data_addr(mlx->textures[3].img_ptr,
 			&mlx->textures[3].bpp, &mlx->textures[3].line_len,
 			&mlx->textures[3].endian);
-	mlx->guntexture.img_ptr = mlx_xpm_file_to_image(mlx->ptr,
-			"./assets/gun0.xpm", &mlx->guntexture.w, &mlx->guntexture.h);
-	mlx->guntexture.addr = mlx_get_data_addr(mlx->guntexture.img_ptr,
-			&mlx->guntexture.bpp, &mlx->guntexture.line_len,
-			&mlx->guntexture.endian);
+	check_gun(mlx);
 }
 
 void	init_libmlx(t_mlx *mlx)

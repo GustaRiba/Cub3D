@@ -6,18 +6,15 @@
 /*   By: gmorais- <gmorais-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 21:14:43 by mbarreto          #+#    #+#             */
-/*   Updated: 2024/02/15 18:25:27 by gmorais-         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:41:20 by gmorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/Cub3d.h"
 #include <stdio.h>
 
-void	parse_colors(t_mlx *g)
+void	parse_colors(t_mlx *g, int i)
 {
-	int	i;
-
-	i = -1;
 	while (g->m->cub[++i])
 	{
 		if (!ft_strncmp(g->m->cub[i], "C ", 2))
@@ -40,6 +37,8 @@ void	parse_colors(t_mlx *g)
 		&& g->m->floor[i] != ' ') || (g->m->floor[i] < '0' \
 		&& g->m->floor[i] != ',' && g->m->floor[i] != ' '))
 			wrong_map(g);
+	if (check_color_value(g->m->sky) || check_color_value(g->m->floor))
+		wrong_map(g);
 }
 
 void	parse_sky(t_mlx *g)
@@ -126,7 +125,7 @@ void	parse_values(t_mlx *g)
 		if (g->m->texture[i] == NULL
 			|| !is_texture_path_valid(g->m->texture[i]))
 			wrong_map(g);
-	parse_colors(g);
+	parse_colors(g, -1);
 	parse_sky(g);
 	i = -1;
 	while (++i < 3)

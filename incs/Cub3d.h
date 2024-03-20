@@ -6,7 +6,7 @@
 /*   By: gmorais- <gmorais-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 21:31:47 by gmorais-          #+#    #+#             */
-/*   Updated: 2024/02/05 21:41:39 by gmorais-         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:35:08 by gmorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@
 # define TILES 34
 
 # define FOV 1.0471975512
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000
+# endif
 
 # include "../mlx_linux/mlx.h"
 # include <fcntl.h>
@@ -202,11 +206,12 @@ char			*get_next_line(int fd);
 char			**ft_split(char const *s, char c);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_atoi(const char *str);
+void			check_gun(t_mlx *mlx);
+int				check_color_value(char *color);
 
 /*/############ PARSER #############*/
 void			map_parser(int argc, char **argv, t_mlx *g);
-
-void			parse_colors(t_mlx *g);
+void			parse_colors(t_mlx *g, int i);
 void			parse_values(t_mlx *g);
 bool			is_texture_path_valid(char *path);
 void			parse_map(t_mlx *g);

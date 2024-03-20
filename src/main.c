@@ -6,12 +6,11 @@
 /*   By: gmorais- <gmorais-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 21:14:35 by mbarreto          #+#    #+#             */
-/*   Updated: 2024/02/15 19:25:44 by gmorais-         ###   ########.fr       */
+/*   Updated: 2024/02/16 18:29:35 by gmorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/Cub3d.h"
-
 
 int	refresh_screen(t_mlx *mlx)
 {
@@ -24,17 +23,6 @@ int	refresh_screen(t_mlx *mlx)
 	return (0);
 }
 
-void    map_print(t_mlx *e)
-{
-    printf("---------------- PRINT MAP ----------------\n");
-    int i = 0;
-    while(e->m->map[i])
-    {
-        printf("MAP->|%s|\n", e->m->map[i]);
-        i++;
-    }
-}
-
 int	main(int argc, char **argv)
 {
 	t_mlx	mlx;
@@ -45,7 +33,6 @@ int	main(int argc, char **argv)
 		exit(1);
 	}
 	map_parser(argc, argv, &mlx);
-	map_print(&mlx);
 	init_libmlx(&mlx);
 	mlx.p = init_player(mlx.p, mlx.m);
 	refresh_screen(&mlx);

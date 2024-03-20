@@ -6,7 +6,7 @@
 /*   By: gmorais- <gmorais-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 21:12:42 by gmorais-          #+#    #+#             */
-/*   Updated: 2024/02/15 19:12:20 by gmorais-         ###   ########.fr       */
+/*   Updated: 2024/02/16 19:33:23 by gmorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,19 @@ void	first_line(char *map, t_mlx *g)
 			wrong_map(g);
 }
 
-void	last_line(char *map, t_mlx *g)
+void	last_line(char *map, char *last_line, int len, t_mlx *g)
 {
 	int	j;
 
 	j = -1;
 	while (map[++j])
+	{
 		if (map[j] != '1' && map[j] != ' ' && map[j] != '\0')
+			wrong_map(g);
+	}
+	j--;
+	if (j < len)
+		if (map[j] && map[j] == '1' && last_line[j] && last_line[j] != '1')
 			wrong_map(g);
 }
 
@@ -54,25 +60,18 @@ void	mid_lines(char **map, t_mlx *g, int i)
 	int	j;
 
 	j = -1;
-	printf("aqui\n");
 	if ((map[i][0] != '1' && map[i][0] != ' ') ||
 		(map[i][ft_strlen(map[i]) - 1] != '1' &&
 			map[i][ft_strlen(map[i]) - 1] != ' '))
 		wrong_map(g);
 	while (map[i][++j])
 	{
-		// printf("aqui %d %d %c\n",i , j, map[i][j]);
-		// if ((map[i][j] == '0' && map[i + 1][j] != '\0' && map[i + 1][j] == ' ')
-		// 	|| (map[i][j] == '0' && map[i][j] != '\0' && map[i - 1][j] == ' ') 
-		// 	|| (map[i][j] == '0' && map[i][j + 1] != '\0' && map[i][j + 1] == ' ')
-		// 	|| (map[i][j] == '0' && map[i][j - 1] != '\0' && map[i][j - 1] == ' '))
-		if ((map[i][j] != ' ' || map[i][j] != '\0') && map[i][j + 1])
-			j++;
-		if (map[i][j] != '0' && map[i][j] != 'E' && map[i][j] != '1' && map[i][j] != '\0' && map[i][j] != ' ')
-		{
-			printf("aqui i:%d j:%d c:%c\n",i , j, map[i][j]);
+		if ((map[i][j] == '0' && map[i + 1][j] != '\0' && map[i + 1][j] == ' ')
+			|| (map[i][j] == '0' && map[i - 1][j] != '\0' && map[i
+				- 1][j] == ' ') || (map[i][j] == '0' && map[i][j + 1] != '\0'
+				&& map[i][j + 1] == ' ') || (map[i][j] == '0' && map[i][j
+				- 1] != '\0' && map[i][j - 1] == ' '))
 			wrong_map(g);
-		}
 	}
 }
 
@@ -87,7 +86,8 @@ void	map_close(t_mlx *g)
 		if (i == 0)
 			first_line(g->m->map[i], g);
 		else if (!g->m->map[i + 1])
-			last_line(g->m->map[i], g);
+			last_line(g->m->map[i], g->m->map[i - 1], \
+			ft_strlen(g->m->map[i - 1]), g);
 		else
 			mid_lines(g->m->minimap, g, i);
 	}
